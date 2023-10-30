@@ -2,7 +2,8 @@ import React from 'react'
 
 const Grid = ({
     grid,
-    newWidth
+    newWidth,
+    onCellClick
 }) => {
   return (
 
@@ -14,13 +15,13 @@ const Grid = ({
   }}
   >
     {grid.map((row, rowIndex) =>
-      row.map((cell, colIndex) => (
+      row.map((cellColor, colIndex) => (
         <div
-          key={`${rowIndex}-${colIndex}`}
-          className="h-10 w-10 border border-zinc-600"
-        >
-
-        </div>
+        key={`${rowIndex}-${colIndex}`}
+        className="h-10 w-10 border border-zinc-600"
+        style={{ backgroundColor: cellColor || 'transparent' }}
+        onClick={() => onCellClick(rowIndex, colIndex)}
+      ></div>
       ))
     )}
   </div>
